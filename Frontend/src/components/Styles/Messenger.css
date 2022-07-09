@@ -1,0 +1,128 @@
+:root{
+    --border_color: #8f8f8f;
+}
+
+
+.message_container{
+    display: grid;
+    grid-template-columns: 30% 70% ;
+    height: 100vh;
+}
+
+.message_container>div{
+    border: 1px solid var(--border_color);
+}
+.conversation_field{
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: 5% 90% 5% ;
+    
+    box-sizing: border-box;
+    background-color: rgb(62, 40, 83);
+}
+.conversation{
+    padding: 8%  10%;
+    height: 100vh;
+    overflow-y: scroll !important;
+    background-color: rgb(62, 40, 83);
+    box-sizing: border-box;
+}
+
+.receiverMsg{
+    color: black;
+
+    
+     min-width: 20rem;
+    width: max-content;
+}
+
+.senderMsg{
+    color: black;
+    
+    /* width: max-content; */
+    text-align: right;
+        justify-self: right;
+        align-content: right;
+}
+.receiverMsg>span{
+    background-color: white;
+        padding: 5px 15px;
+        border-radius: 5px;
+        max-width: 50%;
+}
+ .senderMsg>span{
+background-color: rgb(79, 184, 135);
+    padding: 5px 20px;
+    border-radius: 5px;
+    max-width: 50%;
+}
+
+.user_list{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+}
+
+.all_user_div{
+    padding-top: 25%;
+    box-sizing: border-box;
+}
+
+.user_list>button {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+}
+
+.user_list>button span{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #8f8f8f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user_list>button:hover{
+    background-color: #e4e4e4;
+}
+.msg_field{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    background-color: rgb(62, 40, 83);
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    padding: 10px;
+
+}
+
+.msg_field>input{
+    width: 40%;
+    height: 40px;
+    border: 2px solid red;
+    border-radius: 20px;
+    font-size: 18px;
+    padding-left: 15px;
+}
+
+.msg_field>button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.active{
+    background-color: #e4e4e4 !important;
+}
