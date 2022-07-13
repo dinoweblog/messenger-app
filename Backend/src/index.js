@@ -26,7 +26,7 @@ var server = app.listen(PORT, function () {
   connect();
 });
 
-let io = socket(server);
+let io = socket(server, { cors: { origin: "*" } });
 
 // const io = require("socket.io")(5000, {
 //   cors: {
@@ -58,12 +58,13 @@ io.on("connection", (socket) => {
     io.emit("getUsers", users);
   });
 
-  socket.on("sendMsg", ({ sender, receiverId, text }) => {
+  socket.on("sendMsg", ({ sender, receiverId, text, createdAt }) => {
     const user = getUser(receiverId);
     console.log("user", users, user, receiverId);
     io.emit("getMsg", {
       sender,
       text,
+      createdAt,
     });
   });
 

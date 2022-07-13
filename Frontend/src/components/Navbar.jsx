@@ -1,15 +1,16 @@
 import "./Styles/Navbar.css";
 
-export const Navbar = ({ text, user }) => {
+export const Navbar = ({ online, user }) => {
   return (
     <div className="navbar">
-      {user ? (
+      <div>
+        <i className="bx bxs-user-circle"></i>{" "}
         <p>
-          <span>{user.slice(0, 2).toUpperCase()}</span> {user}
+          {user}
+          <br />
+          <span>{online ? "Online" : ""}</span>
         </p>
-      ) : (
-        <h3>{text}</h3>
-      )}
+      </div>
     </div>
   );
 };

@@ -40,10 +40,10 @@ router.post(
   "/register",
   body("firstname")
     .isLength({ min: 3 })
-    .withMessage("Firstname is required, at least 3 characters."),
+    .withMessage("Firstname & Lastname are required, at least 3 characters."),
   body("lastname")
     .isLength({ min: 3 })
-    .withMessage("Lastname is required, at least 3 characters."),
+    .withMessage("Firstname & Lastname are required, at least 3 characters."),
 
   body("email").isEmail().withMessage("Please Enter valid email."),
 
@@ -65,7 +65,7 @@ router.post(
       if (user)
         return res
           .status(400)
-          .send({ message: "User with that email already exists." });
+          .send({ userexists: "User with that email already exists." });
 
       user = await User.create(req.body);
 

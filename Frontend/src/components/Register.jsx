@@ -8,6 +8,7 @@ export const Register = () => {
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState([]);
   const [msg, setMsg] = useState("");
+  const [userExists, setUserExists] = useState("");
   const [firstname, setfirstname] = useState("");
   const [lastname, setlastname] = useState("");
   const [fn, setFN] = useState("");
@@ -20,9 +21,9 @@ export const Register = () => {
   useEffect(() => {
     document.title = "Register";
   }, []);
-  // useEffect(() => {
-  //   allErrorHandler();
-  // }, [msg, errorMsg]);
+  useEffect(() => {
+    allErrorHandler();
+  }, [msg, errorMsg]);
 
   const userDetails = {
     firstname,
@@ -44,11 +45,13 @@ export const Register = () => {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        // setErrorMsg(res.error);
-        // setMsg(res.message);
-        // allErrorHandler();
-        // !res.error && !res.message ? navigate("/") : navigate("/register");
-        // navigate("/");
+        setErrorMsg(res.error);
+        setMsg(res.message);
+        setUserExists(res.userexists);
+        allErrorHandler();
+        !res.error && !res.message && !res.userexists
+          ? navigate("/")
+          : navigate("/register");
       })
 
       .catch((error) => console.log(error));
@@ -94,8 +97,7 @@ export const Register = () => {
               onChange={(e) => setlastname(e.target.value)}
             />
           </div>
-          <p>{fn}</p>
-          <p>{ln}</p>
+          {fn ? <p>{fn}</p> : <p>{ln}</p>}
           <input
             className={emailE || msg ? "border_color" : ""}
             type="text"
@@ -119,10 +121,10 @@ export const Register = () => {
               onClick={() => {
                 setShowPass(!showPass);
               }}
-            />{" "}
+            />
             <span>Show Password</span>
           </span>
-
+          <p>{userExists}</p>
           <input type="submit" value="Create Account" />
         </form>
       </div>

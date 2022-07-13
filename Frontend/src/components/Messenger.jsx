@@ -11,7 +11,8 @@ import { Navbar } from "./Navbar";
 
 export const Messenger = () => {
   const [allusers, setAllusers] = useState([]);
-  const [secondUserId, setSecondUserId] = useState();
+  const [secondUser, setSecondUser] = useState({});
+  const [onlineUser, setOnlineUser] = useState([]);
   const [conversationId, setConversationId] = useState();
 
   const [active, setActive] = useState(false);
@@ -32,6 +33,7 @@ export const Messenger = () => {
     socket.current.emit("user", userId);
     socket.current.on("getUsers", (user) => {
       console.log(user);
+      setOnlineUser(user);
     });
   }, []);
 
@@ -83,7 +85,7 @@ export const Messenger = () => {
                 <button
                   className={active && index === i ? "active" : ""}
                   onClick={() => {
-                    setSecondUserId(u._id);
+                    setSecondUser(u);
                     getConversationId(u._id);
                     setActive(true);
                     setIndex(i);
@@ -99,12 +101,13 @@ export const Messenger = () => {
         </div>
 
         <div>
-          {secondUserId && conversationId ? (
+          {secondUser && conversationId ? (
             <MessagePanel
+              onlineUser={onlineUser}
               userId={userId}
               conversationId={conversationId}
               socket={socket}
-              secondUserId={secondUserId}
+              secondUser={secondUser}
             />
           ) : (
             <Initial />

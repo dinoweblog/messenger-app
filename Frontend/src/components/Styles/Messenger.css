@@ -1,7 +1,15 @@
-:root{
+
+:root {
+    --btn_hover_color: #1363DF;
+    --font_size: 17px;
+    --btn_color: #1F4690;
+    --link_color: #074aaf;
+    --border-color: #a3a3a3;
+    --hover-color: #f0f0f0;
+    --bg-color: #363062;
+    --input-bg-color: #383358;
     --border_color: #8f8f8f;
 }
-
 
 .message_container{
     display: grid;
@@ -9,23 +17,33 @@
     height: 100vh;
 }
 
-.message_container>div{
-    border: 1px solid var(--border_color);
-}
+
 .conversation_field{
     display: grid;
     min-height: 100vh;
     grid-template-rows: 5% 90% 5% ;
-    
+   
     box-sizing: border-box;
     background-color: rgb(62, 40, 83);
 }
 .conversation{
     padding: 8%  10%;
     height: 100vh;
-    overflow-y: scroll !important;
-    background-color: rgb(62, 40, 83);
+    
+    overflow-y: scroll;
+    background-color: rgb(52, 41, 63);
     box-sizing: border-box;
+    /* display: flex; */
+    /* flex-direction: column-reverse; */
+}
+
+.conversation::-webkit-scrollbar {
+    display: none;
+}
+
+.conversation {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .receiverMsg{
@@ -46,17 +64,21 @@
 }
 .receiverMsg>span{
     background-color: white;
-        padding: 5px 15px;
+        padding: 5px 18px 5px 10px;
         border-radius: 5px;
         max-width: 50%;
 }
  .senderMsg>span{
-background-color: rgb(79, 184, 135);
-    padding: 5px 20px;
+background-color: var(--btn_hover_color);
+padding: 5px 10px 5px 18px;
+    color: white;
     border-radius: 5px;
     max-width: 50%;
 }
-
+.conversation>p>i{
+    color: #838383;
+    font-size: 11px;
+}
 .user_list{
     width: 100%;
     display: flex;
@@ -68,6 +90,7 @@ background-color: rgb(79, 184, 135);
 .all_user_div{
     padding-top: 25%;
     box-sizing: border-box;
+    border-right: 1px solid var(--border_color);
 }
 
 .user_list>button {
@@ -87,7 +110,8 @@ background-color: rgb(79, 184, 135);
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #8f8f8f;
+    color: #7f9cf5 !important;
+    background-color: #ebf4ff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -105,13 +129,14 @@ background-color: rgb(79, 184, 135);
     box-sizing: border-box;
     align-items: center;
     padding: 10px;
+    padding-left: 6%;
 
 }
 
 .msg_field>input{
     width: 40%;
     height: 40px;
-    border: 2px solid red;
+    border: 2px solid var(--btn_color);
     border-radius: 20px;
     font-size: 18px;
     padding-left: 15px;
@@ -123,6 +148,17 @@ background-color: rgb(79, 184, 135);
     cursor: pointer;
 }
 
+.msg_field>button i{
+   font-size: 35px;
+   color: var(--btn_hover_color)
+}
+
 .active{
     background-color: #e4e4e4 !important;
+}
+
+@media (max-width: 998px) {
+    .conversation {
+            padding: 11% 10%;
+        }
 }
